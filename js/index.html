@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>情報数学プログラム</title>
+</head>
+
+<body>
+    <form name="form1">
+        <div>
+            <label>A=</label>
+            <input type="text" id="input-A">
+        </div>
+        <div>
+            <label>B=</label>
+            <input type="text" id="input-B">
+
+        </div>
+        <div>
+            <button type="button" onclick="calc();">計算</button>
+        </div>
+        <textarea cols="70" rows="10" name="result"></textarea>
+    </form>
+    <script>
+        function calc() {
+            var a = document.getElementById("input-A").value;
+            var b = document.getElementById("input-B").value;
+
+            c = Number(a) + Number(b);
+
+            document.form1.result.value = c;
+        }
+    </script>
+</body>
+
+</html>
