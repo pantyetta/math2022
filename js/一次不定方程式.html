@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>math2022 - 一次不定方程式</title>
+</head>
+<body>
+<form name="form1">
+    <h1>一次不定方程式</h1>
+    <div>
+        <label>A=</label>
+        <label for="input-A"></label><input type="text" id="input-A">
+    </div>
+    <div>
+        <label>B=</label>
+        <label for="input-B"></label><input type="text" id="input-B">
+
+    </div>
+    <div>
+        <button type="button" onclick="calc();">計算</button>
+    </div>
+    <label>
+        <textarea cols="70" rows="10" name="result"></textarea>
+    </label>
+</form>
+<script>
+    function calc() {
+        
+        document.form1.result.value = "";
+        
+        if(document.getElementById("input-A").value == "" || document.getElementById("input-B").value == "")
+            return 0;
+        
+        let a = [];
+        let b = [];
+
+        let q = [];
+        let r = [];
+        
+        let i = 0;
+        
+        a.push(Number(document.getElementById("input-A").value));
+        b.push(Number(document.getElementById("input-B").value));
+        
+        while(true){
+            q.push(a[i] / b[i] | 0);
+            r.push(a[i] % b[i]);
+            document.form1.result.value += `(${i}) ${a[i]} = ${b[i]} * ${q[i]} + ${r[i]}\n`;
+            if (r[i] == 0)
+                break;
+            a.push(b[i]); //割った数=>割られる数
+            b.push(r[i]); //あまり=>割る数
+
+            i++;
+        }
+        
+        document.form1.result.value += `最大公約数: ${b[i]}\n`
+
+        let num1_x = 1
+        let num2_x = -q[i-1]
+        document.form1.result.value += `(${i-1}) 1 = ${a[i-1]} * ${num1_x} + ${b[i-1]} * ${num2_x}\n`
+
+        for (let j = a.length -3; j >= 0; j--) {// リストの最後-3から0まで
+            let num0_x = num1_x; // aにかかっている前の係数を保存
+            num1_x = num2_x; // aにかかる係数はひとつ前のbの係数
+            num2_x *= -q[j]; // ひとつ前のbの係数に新しい係数をかける
+            num2_x += num0_x;// 前のaにかかっていた係数をプラス
+
+            document.form1.result.value += `(${j}) 1 = ${a[j]} * ${num1_x} + ${b[j]} * ${num2_x}\n`;
+
+        }        
+        document.form1.result.value += `x = ${num1_x} y = ${num2_x}\n`;
+
+        document.form1.result.value += "--- 一般解 ---\n";
+        document.form1.result.value += `x = ${num1_x} + ${b[0]}t\n`;
+        document.form1.result.value += `y = ${num2_x} - ${a[0]}t\n`;
+        
+    }
+</script>
+</body>
+</html>

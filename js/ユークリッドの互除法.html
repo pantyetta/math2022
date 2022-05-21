@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>math2022 - ユークリッドの互除法</title>
+</head>
+<body>
+<form name="form1">
+    <h1>ユークリッドの互除法</h1>
+    <div>
+        <label>A=</label>
+        <label for="input-A"></label><input type="text" id="input-A">
+    </div>
+    <div>
+        <label>B=</label>
+        <label for="input-B"></label><input type="text" id="input-B">
+
+    </div>
+    <div>
+        <button type="button" onclick="calc();">計算</button>
+    </div>
+    <label>
+        <textarea cols="70" rows="10" name="result"></textarea>
+    </label>
+</form>
+<script>
+    function calc() {
+        let a = Number(document.getElementById("input-A").value);
+        let b = Number(document.getElementById("input-B").value);
+
+        let q = 0;
+        let r = 0;
+        
+        let i = 0;
+
+        while(true){
+            q = a / b | 0;
+            r = a % b;
+            document.form1.result.value += `(${i}) ${a} = ${b} * ${q} + ${r}\n`;
+            if (r == 0)
+                break;
+            a = b; //割った数=>割られる数
+            b = r; //あまり=>割る数            
+            i++;
+        }
+        document.form1.result.value += `最大公約数: ${b}\n`
+    }
+</script>
+</body>
+</html>

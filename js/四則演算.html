@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
     <meta charset="UTF-8">
-    <title>情報数学プログラム</title>
+    <title>math2022 - 四則演算</title>
 </head>
-
 <body>
     <form name="form1">
+        <h1>四則演算 - 足し算しか出来ないよ</h1>
         <div>
             <label>A=</label>
-            <input type="text" id="input-A">
+            <label for="input-A"></label><input type="text" id="input-A">
         </div>
         <div>
             <label>B=</label>
-            <input type="text" id="input-B">
-
+            <label for="input-B"></label><input type="text" id="input-B">
         </div>
         <div>
             <button type="button" onclick="calc();">計算</button>
         </div>
-        <textarea cols="70" rows="10" name="result"></textarea>
+        <label>
+            <textarea cols="70" rows="10" name="result"></textarea>
+        </label>
     </form>
     <script>
         function calc() {
@@ -33,5 +33,4 @@
         }
     </script>
 </body>
-
 </html>
