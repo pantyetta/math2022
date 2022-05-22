@@ -4,30 +4,16 @@
     font-family: 'Noto Sans JP', sans-serif;
 }
 
-body{
-
-}
-
 a:hover{
     opacity: 60%;
 }
 
 header{
-    display: flex;
+    z-index: 10;
 }
 
-div{
-    margin-right: 1vw;
-}
-
-a{
-    text-decoration: none;
-    color: black;
-    font-size: 2vh;
-}
-
-#root-header{
-    width: 60%;
+.root_header .header-inner{
+    width: 100%;
     display: block;
     position: absolute;
     top: 50%;
@@ -35,17 +21,140 @@ a{
     transform: translate(-50%, -50%);
     text-align: center;
 }
-#root-header div{
+.root_header div{
     margin: 0;
 }
 
-#root-header a {
+.root_header a {
      text-decoration: none;
      font-size: 5vh;
      color: black;
      height: 8vh;
  }
 
+.content_header .header-inner{
+    display: flex;
+}
+
+.content_header .header-inner div{
+    margin-right: 1vw;
+}
+
+.content_header .header-inner a{
+    text-decoration: none;
+    color: black;
+    font-size: 2vh;
+}
+
 form div{
     margin-bottom: 0.8vh;
+}
+
+@media (max-width: 640px) {
+        
+    .root_header .header-inner {
+        width: 90%;
+    } 
+    
+    .header-inner a {
+        font-size: 4vh;
+    }
+
+    .content_header{
+        display: none;
+        opacity: 0;
+        transition: all .4s;
+    }
+    
+    .select .content_header{
+        display: block;
+        opacity: 100%;
+    }
+    
+    .content_header{
+        margin: 0;
+        padding: 0;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background: aliceblue;
+        position: fixed;
+    }
+    .content_header .header-inner{
+        flex-direction: column;
+        width: 80%;
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+    .content_header .header-inner div{
+        margin: 0;
+    }
+    .content_header .header-inner a{
+        text-decoration: none;
+        font-size: 4vh;
+        color: black;
+        height: 8vh;
+    }
+    .control{
+        position: absolute;
+        height: 22px;
+        width: 25px;
+        top: 20px;
+        right: 20px;
+        z-index: 100;
+    }
+    
+    .control0{
+        width: 25px;
+        height: 2px;
+        position: absolute;
+        top: 0;
+        z-index: 100;
+        background: black;
+        transition: all .4s;
+    }
+    .control1{
+        width: 25px;
+        height: 2px;
+        position: absolute;
+        top: 8px;
+        z-index: 100;
+        background: black;
+        transition: all .4s;
+    }
+    .control2{
+        width: 25px;
+        height: 2px;
+        position: absolute;
+        top: 16px;
+        z-index: 100;
+        background: black;
+        transition: all .4s;
+    }
+    
+    .select .control0{
+        transform: rotate(-45deg);
+        top: 8px;
+    }
+    .select .control1{
+        opacity: 0;
+    }    
+    .select .control2{
+        transform: rotate(45deg);
+        top: 8px;
+    }
+    
+    form div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    textarea{
+        max-width: 100%;
+    }
 }
