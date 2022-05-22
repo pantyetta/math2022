@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f3e03272-dd6b-4ffa-85cb-a07b3b8f6357" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.math2022.dir/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.math2022.dir/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.math2022.dir/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/ax≡1(mod N).html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/逆行列.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/連立方程式.html" afterDir="false" />
+    <list default="true" id="f3e03272-dd6b-4ffa-85cb-a07b3b8f6357" name="Changes" comment="調節">
+      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.math2022.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.math2022.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/ユークリッドの互除法.html" beforeDir="false" afterPath="$PROJECT_DIR$/js/ユークリッドの互除法.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/一次不定方程式.html" beforeDir="false" afterPath="$PROJECT_DIR$/js/一次不定方程式.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/四則演算.html" beforeDir="false" afterPath="$PROJECT_DIR$/js/四則演算.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/ax≡1(mod N).html" beforeDir="false" afterPath="$PROJECT_DIR$/js/modN.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/ユークリッドの互除法.html" beforeDir="false" afterPath="$PROJECT_DIR$/js/yu-kuriddo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/一次不定方程式.html" beforeDir="false" afterPath="$PROJECT_DIR$/js/ichiji-futei.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/四則演算.html" beforeDir="false" afterPath="$PROJECT_DIR$/js/sisoku.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/逆行列.html" beforeDir="false" afterPath="$PROJECT_DIR$/js/inverseA.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/連立方程式.html" beforeDir="false" afterPath="$PROJECT_DIR$/js/houteishiki.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +56,7 @@
       <workItem from="1653102850636" duration="103000" />
       <workItem from="1653151778599" duration="1178000" />
       <workItem from="1653189856463" duration="5400000" />
-      <workItem from="1653214195173" duration="455000" />
+      <workItem from="1653214195173" duration="1403000" />
     </task>
     <task id="LOCAL-00001" summary="ユークリッド、一次不定方程式、四則演算、pythonの調整">
       <created>1653102492055</created>
@@ -74,7 +72,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653102942023</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="調節">
+      <created>1653214807682</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1653214807682</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -98,6 +103,7 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="ユークリッド、一次不定方程式、四則演算、pythonの調整" />
     <MESSAGE value="ヘッダーの追加" />
-    <option name="LAST_COMMIT_MESSAGE" value="ヘッダーの追加" />
+    <MESSAGE value="調節" />
+    <option name="LAST_COMMIT_MESSAGE" value="調節" />
   </component>
 </project>
