@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f3e03272-dd6b-4ffa-85cb-a07b3b8f6357" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.math2022.dir/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.math2022.dir/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.math2022.dir/.idea/vcs.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/js/ax≡1(mod N).html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/js/逆行列.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/連立方程式.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.math2022.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.math2022.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/ユークリッドの互除法.html" beforeDir="false" afterPath="$PROJECT_DIR$/js/ユークリッドの互除法.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/一次不定方程式.html" beforeDir="false" afterPath="$PROJECT_DIR$/js/一次不定方程式.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/四則演算.html" beforeDir="false" afterPath="$PROJECT_DIR$/js/四則演算.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +57,8 @@
       <workItem from="1653098987052" duration="3525000" />
       <workItem from="1653102850636" duration="103000" />
       <workItem from="1653151778599" duration="1178000" />
-      <workItem from="1653189856463" duration="3878000" />
+      <workItem from="1653189856463" duration="5400000" />
+      <workItem from="1653214195173" duration="455000" />
     </task>
     <task id="LOCAL-00001" summary="ユークリッド、一次不定方程式、四則演算、pythonの調整">
       <created>1653102492055</created>

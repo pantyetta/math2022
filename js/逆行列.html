@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>math2022 - 逆行列</title>
+</head>
+<body>
+<header>
+    <a href="四則演算.html">四則演算</a>
+    <a href="ユークリッドの互除法.html">ユークリッドの互除法</a>
+    <a href="一次不定方程式.html">一次不定方程式</a>
+    <a href="ax≡1(mod N).html">ax≡1(mod N)</a>
+    <a href="逆行列.html">逆行列</a>
+</header>
+<form name="form1">
+    <h1>逆行列</h1>
+    <div>
+        <label for="input-d1">d1=</label><input type="text" id="input-d1">
+        <label for="input-d2">d2=</label><input type="text" id="input-d2">
+    </div>
+    <div>
+        <label for="input-d3">d3=</label><input type="text" id="input-d3">
+        <label for="input-d4">d4=</label><input type="text" id="input-d4">
+    </div>
+    <div>
+        <label for="input-mod">mod N=</label><input type="text" id="input-mod">
+    </div>
+    <div>
+        <button type="button" onclick="calc();">計算</button>
+    </div>
+    <label>
+        <textarea cols="70" rows="10" name="result"></textarea>
+    </label>
+</form>
+<script>
+    function calc() {
+        
+        document.form1.result.value = "";
+        
+        let a = [];
+        let b = [];
+
+        let q = [];
+        let r = [];
+        
+        let i = 0;
+        
+        let data = [[0,0],[0,0]];
+        let inverse_data = [[0,0],[0,0]];
+
+        data[0][0] = Number(document.getElementById(`input-d1`).value);
+        data[0][1] = Number(document.getElementById(`input-d2`).value);
+        data[1][0] = Number(document.getElementById(`input-d3`).value);
+        data[1][1] = Number(document.getElementById(`input-d4`).value);
+        
+        const n = Number(document.getElementById("input-mod").value);
+        
+        const data_retu = data[0][0] * data[1][1] - data[0][1] * data[1][0];
+        
+        document.form1.result.value += `${((data_retu % n) + n) % n} ≡ 1(mod ${n})\n`;
+        
+        a.push(((data_retu % n) + n) % n);
+        b.push(n);
+        
+        while(true){
+            q.push(a[i] / b[i] | 0);
+            r.push(a[i] % b[i]);
+            document.form1.result.value += `(${i}) ${a[i]} = ${b[i]} * ${q[i]} + ${r[i]}\n`;
+            if (r[i] == 0)
+                break;
+            a.push(b[i]); //割った数=>割られる数
+            b.push(r[i]); //あまり=>割る数
+
+            i++;
+        }
+        
+        document.form1.result.value += `最大公約数: ${b[i]}\n`;
+
+        let num1_x = 1;
+        let num2_x = -q[i-1];
+        document.form1.result.value += `(${i-1}) 1 = ${a[i-1]} * ${num1_x} + ${b[i-1]} * ${num2_x}\n`;
+
+        for (let j = a.length -3; j >= 0; j--) {// リストの最後-3から0まで
+            let num0_x = num1_x; // aにかかっている前の係数を保存
+            num1_x = num2_x; // aにかかる係数はひとつ前のbの係数
+            num2_x *= -q[j]; // ひとつ前のbの係数に新しい係数をかける
+            num2_x += num0_x;// 前のaにかかっていた係数をプラス
+
+            document.form1.result.value += `(${j}) 1 = ${a[j]} * ${num1_x} + ${b[j]} * ${num2_x}\n`;
+
+        }        
+        document.form1.result.value += `x = ${num1_x} y = ${num2_x}\n`;
+    
+        const inverse_data_siki = ((num1_x % n) + n) % n;
+        
+        document.form1.result.value += `インバース|A| ≡ ${inverse_data_siki} (mod ${n})\n`;
+
+        inverse_data[0][0] = (((data[1][1] * inverse_data_siki) % n) + n)%n;
+        inverse_data[0][1] = (((-data[0][1] * inverse_data_siki) % n) + n)%n;
+        inverse_data[1][0] = (((-data[1][0] * inverse_data_siki) % n) + n)%n;
+        inverse_data[1][1] = (((data[0][0] * inverse_data_siki) % n) + n)%n;
+
+
+        for (let j = 0; j < 2; j++) {
+            document.form1.result.value += `| ${inverse_data[j][0]}, ${inverse_data[j][1]} |\n`;
+        }
+    }
+</script>
+</body>
+</html>

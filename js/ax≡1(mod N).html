@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>math2022 - 一次不定方程式</title>
+    <title>math2022 - ax≡1(mod N)</title>
 </head>
 <body>
 <header>
@@ -13,13 +13,13 @@
     <a href="逆行列.html">逆行列</a>
 </header>
 <form name="form1">
-    <h1>一次不定方程式</h1>
+    <h1>ax≡1(mod N)</h1>
     <div>
-        <label>x=</label>
+        <label>a=</label>
         <label for="input-A"></label><input type="text" id="input-A">
     </div>
     <div>
-        <label>y=</label>
+        <label>mod N=</label>
         <label for="input-B"></label><input type="text" id="input-B">
 
     </div>
@@ -46,8 +46,10 @@
         
         let i = 0;
         
-        a.push(Number(document.getElementById("input-A").value));
-        b.push(Number(document.getElementById("input-B").value));
+        const ax = Number(document.getElementById("input-A").value);
+        const n = Number(document.getElementById("input-B").value);
+        a.push(ax);
+        b.push(n);
         
         while(true){
             q.push(a[i] / b[i] | 0);
@@ -78,9 +80,7 @@
         }        
         document.form1.result.value += `x = ${num1_x} y = ${num2_x}\n`;
 
-        document.form1.result.value += "--- 一般解 ---\n";
-        document.form1.result.value += `x = ${num1_x} + ${b[0]}t\n`;
-        document.form1.result.value += `y = ${num2_x} - ${a[0]}t\n`;
+        document.form1.result.value += `x ≡ ${((num1_x % n) + n) % n} (mod ${n})\n`
         
     }
 </script>
