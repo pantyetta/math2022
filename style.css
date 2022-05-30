@@ -4,13 +4,8 @@
     font-family: 'Noto Sans JP', sans-serif;
 }
 
-a{
-    transition:cubic-bezier(0,.27,.48,2.01) .2s;
-}
-
 a:hover{
     opacity: 60%;
-    transform: scale(1.1);
 }
 
 header{
