@@ -18,7 +18,7 @@ for s1 in range(0, len(shiin)):
                 for b1 in range(0, len(boin)):
                     if (0 < b1 < 4) and (s1 == 4 or s2 == 4 or s4 == 4):  # A,Oの時子音がWだったら次
                         continue
-                    for b2 in range(0, len(shiin)):
+                    for b2 in range(0, len(boin)):
                         if b1 == b2 or ((0 < b2 < 4) and s3 == 4):  # A,Oの時子音がWだったら次:
                             continue
 
