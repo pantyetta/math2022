@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>math2022 - 四則演算</title>
+    <link rel="stylesheet" href="/math2022/style.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WV1Q0JRDPL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-WV1Q0JRDPL');
+    </script>
+</head>
+<body>
+<header>
+    <div class="control"><span class="control0"></span><span class="control1"></span><span class="control2"></span>
+    </div>
+    <div class="content_header">
+        <div class="header-inner">
+            <div><a href="/math2022/js/sisoku.html">四則演算(足し算)</a></div>
+            <div><a href="/math2022/js/yu-kuriddo.html">ユークリッドの互除法</a></div>
+            <div><a href="/math2022/js/ichiji-futei.html">一次不定方程式</a></div>
+            <div><a href="/math2022/js/modN.html">ax≡1(mod N)</a></div>
+            <div><a href="/math2022/js/inverseA.html">インバースA</a></div>
+            <div><a href="/math2022/js/houteishiki.html">連立方程式</a></div>
+            <div><a href="/math2022/js/task/2022-6-2.html">6/2 課題</a></div>
+        </div>
+    </div>
+</header>
+<h1>6月2日 課題</h1>
+<form name="form1">
+    <h2>(1) 暗号化せよ</h2>
+    <div>
+        <label for="input-A">Input=</label><input type="text" id="input-A">
+    </div>
+    <div>
+        <label for="input-B">ずらす数=</label><input type="text" id="input-B">
+    </div>
+    <div>
+        <button type="button" onclick="prom();">計算</button>
+    </div>
+    <label>
+        <textarea cols="70" rows="10" name="result"></textarea>
+    </label>
+</form>
+<form name="form2">
+    <h2>(2) 複合化</h2>
+    <div>
+        <label for="input-C">Input=</label><input type="text" id="input-C">
+    </div>
+    <div>
+        <label for="input-D">ずらす数=</label><input type="text" id="input-D">
+    </div>
+    <div>
+        <button type="button" onclick="prob2();">計算</button>
+    </div>
+    <label>
+        <textarea cols="70" rows="10" name="result"></textarea>
+    </label>
+</form>
+<form name="form3">
+    <h2>(3) WVSPJLを解読せよ</h2>
+    <div>
+        <label for="input-E">Input=</label><input type="text" id="input-E">
+    </div>
+
+    <div>
+        <button type="button" onclick="prob3();">計算</button>
+    </div>
+    <label>
+        <textarea cols="70" rows="10" name="result"></textarea>
+    </label>
+</form>
+<form name="form4">
+    <h2>(4) ！HDHEWLHを複合化する</h2>
+    <div>
+        <button type="button" onclick="prob4();">計算</button>
+    </div>
+    <label>
+        <textarea cols="70" rows="10" name="result"></textarea>
+    </label>
+</form>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="/math2022/script.js"></script>
+<script>
+
+    const json = {
+        "A": 0,
+        "B": 1,
+        "C": 2,
+        "D": 3,
+        "E": 4,
+        "F": 5,
+        "G": 6,
+        "H": 7,
+        "I": 8,
+        "J": 9,
+        "K": 10,
+        "L": 11,
+        "M": 12,
+        "N": 13,
+        "O": 14,
+        "P": 15,
+        "Q": 16,
+        "R": 17,
+        "S": 18,
+        "T": 19,
+        "U": 20,
+        "V": 21,
+        "W": 22,
+        "X": 23,
+        "Y": 24,
+        "Z": 25,
+        "!": 26
+    };
+
+    const shiin = ["K", "M", "N", "R", "W"];
+    const boin = ["A", "I", "U", "E", "O"];
+
+    let decode = value => json[value]
+
+    let encode = value => Object.entries(json).filter(item => item[1] === value)[0][0]
+
+    function prom() {
+        document.form1.result.value = "";
+
+        const text = document.getElementById(`input-A`).value; //暗号文
+        const offset = Number(document.getElementById(`input-B`).value); //文字数
+
+        for (let i = 0; i < text.length; i++) {
+            let code = (((decode(text.charAt(i)) + offset) % 27) + 27) % 27;  //mod 26に調節 0-26なので27個
+            document.form1.result.value += encode(code);
+        }
+    }
+
+    function prob2() {
+        document.form2.result.value = "";
+
+        const text = document.getElementById(`input-C`).value; //暗号文
+        const offset = Number(document.getElementById(`input-D`).value); //文字数
+
+        for (let i = 0; i < text.length; i++) {
+            let code = (((decode(text.charAt(i)) - offset) % 27) + 27) % 27;  //mod 26に調節 0-26なので27個
+            document.form2.result.value += encode(code);
+        }
+    }
+
+    function prob3() {
+        document.form3.result.value = "";
+
+        const text = document.getElementById(`input-E`).value; //暗号文
+
+        for (let i = 0; i < 27; i++) {
+            document.form3.result.value += "key: " + i + "\n";
+            for (let j = 0; j < text.length; j++) {
+                let code = (((decode(text.charAt(j)) - i) % 27) + 27) % 27;  //mod 26に調節 0-26なので27個
+                document.form3.result.value += encode(code);
+            }
+            document.form3.result.value += "\n ---------- \n";
+        }
+    }
+
+    function prob4() {
+        document.form4.result.value = "";
+        let count = 0;
+        for (let i = 0; i < shiin.length; i++) {    //子音１つ目
+            for (let j = 0; j < shiin.length; j++) {    //子音２つ目
+                if (i === j)
+                    continue;
+                for (let k = 0; k < shiin.length; k++) {    //子音３つ目
+                    if (i === k || j === k)
+                        continue
+                    for (let l = 0; l < shiin.length; l++) {    //子音４つ目
+                        if (i === l || j === l || k === l)
+                            continue
+                        for (let m = 0; m < boin.length; m++) { //母音１つ目
+                            if ((0 < m && m < 4) && (i === 4 || j === 4 || l === 4)) //1,2,4の子音がWの時A,O以外を除外
+                                continue
+                            for (let n = 0; n < boin.length; n++) { //母音２つ目
+                                if (m === n || (0 < n && n < 4) && k === 4)    //3の子音がWの時にA,O以外を除外
+                                    continue
+                                count++;
+                                document.form4.result.value += count + ": " + shiin[i] + boin[m] + shiin[j] + boin[m] + shiin[k] + boin[n] + shiin[l] + boin[m] + "\n";
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>
