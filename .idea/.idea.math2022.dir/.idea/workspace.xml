@@ -1,17 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f3e03272-dd6b-4ffa-85cb-a07b3b8f6357" name="Changes" comment="UI調整">
-      <change afterPath="$PROJECT_DIR$/script.js" afterDir="false" />
+    <list default="true" id="f3e03272-dd6b-4ffa-85cb-a07b3b8f6357" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.math2022.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.math2022.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/houteishiki.html" beforeDir="false" afterPath="$PROJECT_DIR$/js/houteishiki.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/ichiji-futei.html" beforeDir="false" afterPath="$PROJECT_DIR$/js/ichiji-futei.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/inverseA.html" beforeDir="false" afterPath="$PROJECT_DIR$/js/inverseA.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/modN.html" beforeDir="false" afterPath="$PROJECT_DIR$/js/modN.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/sisoku.html" beforeDir="false" afterPath="$PROJECT_DIR$/js/sisoku.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/yu-kuriddo.html" beforeDir="false" afterPath="$PROJECT_DIR$/js/yu-kuriddo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +53,7 @@
       <workItem from="1653151778599" duration="1178000" />
       <workItem from="1653189856463" duration="5400000" />
       <workItem from="1653214195173" duration="11044000" />
+      <workItem from="1655025758878" duration="1524000" />
     </task>
     <task id="LOCAL-00001" summary="ユークリッド、一次不定方程式、四則演算、pythonの調整">
       <created>1653102492055</created>
@@ -98,7 +90,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653219195209</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="task 6-2 title change">
+      <created>1655033483775</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1655033483775</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,6 +124,7 @@
     <MESSAGE value="調節" />
     <MESSAGE value="ヘッダーの調節" />
     <MESSAGE value="UI調整" />
-    <option name="LAST_COMMIT_MESSAGE" value="UI調整" />
+    <MESSAGE value="task 6-2 title change" />
+    <option name="LAST_COMMIT_MESSAGE" value="task 6-2 title change" />
   </component>
 </project>
