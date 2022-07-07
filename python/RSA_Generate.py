@@ -57,7 +57,7 @@ def saveFile(rsa_key, file_path, mode=0):
 
 
 def getfile(default=path.expanduser("~") + r"\.ssh\id_rsa"):
-    input_pripath = input(f"saved key path ({default}):")  # 保存場所
+    input_pripath = input(f"saved Private key path ({default}):")  # 保存場所
     if path.isfile(input_pripath):  # 空白時デフォルト使用
         importfile = open(input_pripath, "rb").read()
         try:
@@ -94,6 +94,7 @@ def main():
 
 def generate_pubKey():
     savepath = getfile()
+    print("Generate Public Key...")
     private_key = open(savepath, "rb").read()
     public_key = RSA.import_key(private_key).publickey().export_key(format="OpenSSH", protection="DER")
     saveFile(public_key, savepath, 1)
