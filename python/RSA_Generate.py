@@ -1,6 +1,7 @@
 from Crypto.PublicKey import RSA
 from os import path
 from getpass import getpass
+import sys
 
 
 def getBufferSize(default=2048):
@@ -55,6 +56,22 @@ def saveFile(rsa_key, file_path, mode=0):
     fw.close()
 
 
+def getfile(default=path.expanduser("~") + r"\.ssh\id_rsa"):
+    input_pripath = input(f"saved key path ({default}):")  # 保存場所
+    if path.isfile(input_pripath):  # 空白時デフォルト使用
+        importfile = open(input_pripath, "rb").read()
+        try:
+            if not RSA.import_key(importfile).has_private():
+                raise ValueError
+        except ValueError:
+            print(f"Error: {input_pripath} is not Private key")
+            quit(0)
+        return input_pripath
+    else:
+        print(f"Error: not found file ({input_pripath})")
+        quit(0)
+
+
 def main():
 
     print("Generate Private Key...")
@@ -75,9 +92,20 @@ def main():
     saveFile(public_key, savepath, 1)
 
 
+def generate_pubKey():
+    savepath = getfile()
+    private_key = open(savepath, "rb").read()
+    public_key = RSA.import_key(private_key).publickey().export_key(format="OpenSSH", protection="DER")
+    saveFile(public_key, savepath, 1)
+
+
 if __name__ == '__main__':
     try:
-        main()
+        args = sys.argv
+        if len(args) > 1 and args[1] == "--createpub":
+            generate_pubKey()
+        else:
+            main()
     except KeyboardInterrupt:
         pass
 
