@@ -3,7 +3,7 @@ import numpy as np
 import math
 
 
-def old():
+def original():
     print("\
     |d0 d1|    |x|\n\
     |     | ≡ | | (mode N)\n\

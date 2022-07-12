@@ -1,7 +1,7 @@
-import sympy as sy
+import sympy as sp
 
 
-def old(x, y):
+def original(x, y):
     a = []  # 割られる数
     b = []  # 割る数
     q = []  # 商
@@ -52,7 +52,7 @@ def old(x, y):
 
 
 def main(x, y):
-    answer = sy.gcdex(x, y)
+    answer = sp.gcdex(x, y)
     print(f" x= {answer[0]}, y= {answer[1]}")
     print("--- 一般解 ---")
     print(f" x= {answer[0]} + {y}t")
@@ -60,13 +60,16 @@ def main(x, y):
 
 
 if __name__ == '__main__':
-    x = (int(input("X: ")))
-    y = (int(input("y: ")))
+    try:
+        x = (int(input("X: ")))
+        y = (int(input("y: ")))
 
-    print("### used library ###")
-    main(x, y)
-    print("### end library ###\n")
+        print("### used library ###")
+        main(x, y)
+        print("### end library ###\n")
 
-    print("### original ###")
-    old(x, y)
-    print("### end original ###")
+        print("### original ###")
+        old(x, y)
+        print("### end original ###")
+    except KeyboardInterrupt:
+        pass

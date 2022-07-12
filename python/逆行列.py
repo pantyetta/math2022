@@ -2,7 +2,7 @@ import sympy as sp
 import numpy as np
 
 
-def old():
+def original():
     print("\
     |d0 d1|\n\
     |d2 d3|\n\

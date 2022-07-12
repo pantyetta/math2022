@@ -1,7 +1,7 @@
 import sympy as sp
 
 
-def old():
+def original():
     print("ax ≡ 1 (mod N)")
     input_a = int(input("a: "))
     N = int(input("mod: "))
