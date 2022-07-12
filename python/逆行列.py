@@ -1,4 +1,5 @@
 import sympy as sp
+import numpy as np
 
 
 def old():
@@ -96,19 +97,36 @@ def old():
         print("|")
 
 
+Determinant = lambda data: data[0][0] * data[1][1] - data[0][1] * data[1][0]
+Inverse_arr = lambda data: np.array([[data[1][1], -data[0][1]], [-data[1][0], data[0][0]]])
+
+
 def main():
-    print("ax ≡ 1 (mod N)")
-    input_a = int(input("a (1537): "))
-    modN = int(input("mod N (1457): "))
+    print("\
+    |d0 d1|\n\
+    |d2 d3|\n\
+    --------\
+    ")
 
-    print("--- input result ---")
-    print(f"{input_a}x ≡ 1 (mod {modN})")
-    print(f"{input_a}x + {modN}y = 1")
+    data = np.zeros((2, 2))
 
-    answer = sp.gcdex(input_a, modN)
-    print("--- result ---")
-    print(f"x≡{answer[0]%modN} (mod {modN})")
+    for i in range(0, 2):  # ----input
+        for j in range(0, 2):
+            data[i][j] = int(input(f"d{i,j}: "))
+    modN = int(input("mondN: "))
+    data_siki = int(Determinant(data) % modN)
+
+    data_in = (Inverse_arr(data) * sp.gcdex(data_siki, modN)[0]) % modN  # 逆行列 * 一次不定式
+    print("#### result ####")
+    for i in range(0, 2):
+        print("| ", end='')
+        for j in range(0, 2):
+            print(f"{int(data_in[i][j])} ", end='')
+        print("|")
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        pass
