@@ -1,10 +1,15 @@
 import conversion
 import numpy as np
+import sympy as sp
+import sys
+
+Determinant = lambda data: int(data[0][0] * data[1][1] - data[0][1] * data[1][0])
+Inverse_arr = lambda data: np.array([[data[1][1], -data[0][1]], [-data[1][0], data[0][0]]])
+Inverse = lambda Key, modN: ((sp.gcdex(Determinant(Key), modN)[0] % modN) * Inverse_arr(Key)) % modN
 
 
-def encrypt():
+def console_input():
     Key = np.zeros((2, 2))
-
     for i in range(0, 2):  # ----input
         for j in range(0, 2):
             Key[i][j] = int(input(f"Key{i},{j}: "))
@@ -17,6 +22,60 @@ def encrypt():
         modN += 1
         text_template += "〓"
 
+    return Key, text, text_template, modN
+
+
+def console_out(data):
+    for i in range(0, 2):
+        print("| ", end='')
+        for j in range(0, 2):
+            print(f"{int(data[i][j])} ", end='')
+        print("|")
+
+
+def decipher():
+    Crypt_arr = np.zeros((2, 2))
+    Plain_arr = np.zeros((2, 2))
+
+    for i in range(0, 2):  # ----input
+        for j in range(0, 2):
+            Plain_arr[i][j] = int(input(f"p{i},{j}: "))
+
+    for i in range(0, 2):  # ----input
+        for j in range(0, 2):
+            Crypt_arr[i][j] = int(input(f"c{i},{j}: "))
+
+    mod = (int(input("mod: ")))
+
+    plain_inv = Inverse(Plain_arr, mod)
+    Key = np.dot(Crypt_arr, plain_inv) % mod
+    print("#### result ####")
+    print("encryption Key")
+    console_input(Key)
+
+    Key_determinant = sp.gcdex(Determinant(Key), mod)[0] % mod
+    Key_inv = np.dot(Key_determinant, Inverse_arr(Key)) % mod
+    print("decryption key")
+    console_input(Key_inv)
+
+
+def decrypt():
+    Key, text, text_template, modN = console_input()
+
+    Key = Inverse(Key, modN)
+
+    raw_value_arr = conversion.text_decode(text, text_template)  # テキストを数値に変換
+    value_arr = conversion.value_encode(raw_value_arr)  # ２次元配列形式に変更
+    row_answer = np.dot(Key, value_arr) % modN    # 行列の掛け算
+    answer = conversion.value_decode(row_answer)    # 単一配列に変換
+    print("#### result ####")
+    for t in conversion.text_encode(answer, text_template):
+        print(t, end='')
+
+
+def convert():
+    Key, text, text_template, modN = console_input()
+
     raw_value_arr = conversion.text_decode(text, text_template)  # テキストを数値に変換
     value_arr = conversion.value_encode(raw_value_arr)  # ２次元配列形式に変更
     row_answer = np.dot(Key, value_arr) % modN    # 行列の掛け算
@@ -28,6 +87,10 @@ def encrypt():
 
 if __name__ == '__main__':
     try:
-        encrypt()
+        args = sys.argv
+        if len(args) > 1 and args[1] == "--decipher":
+            decipher()
+        else:
+            convert()
     except KeyboardInterrupt:
         pass
