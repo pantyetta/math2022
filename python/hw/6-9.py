@@ -33,7 +33,7 @@ def console_out(data):
         print("|")
 
 
-def decipher():
+def search():
 
     template = input("template: ")
     raw_plain = conversion.text_decode(input("p: "), template)
@@ -70,7 +70,7 @@ def decrypt():
         print(t, end='')
 
 
-def convert():
+def crypt():
     Key, text, text_template, modN = console_input()
 
     raw_value_arr = conversion.text_decode(text, text_template)  # テキストを数値に変換
@@ -84,9 +84,14 @@ def convert():
 if __name__ == '__main__':
     try:
         args = sys.argv
-        if len(args) > 1 and args[1] == "--decipher":
-            decipher()
+        if len(args) > 1 and args[1] == "--search":
+            print("search mode...")
+            search()
+        elif len(args) > 1 and args[1] == "--decrypt":
+            print("decrypt mode...")
+            decrypt()
         else:
-            convert()
+            print("crypt mode...")
+            crypt()
     except KeyboardInterrupt:
         pass

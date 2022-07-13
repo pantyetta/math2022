@@ -43,10 +43,13 @@ if __name__ == '__main__':
     try:
         args = sys.argv
         if len(args) > 1 and args[1] == "--calc-key":
+            print("calc key mode...")
             calcKey()
         elif len(args) > 1 and args[1] == "--decrypt":
+            print("decrypt mode...")
             decrypt()
         else:
+            print("crypt mode...")
             crypt()
     except KeyboardInterrupt:
         pass
