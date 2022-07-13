@@ -34,29 +34,26 @@ def console_out(data):
 
 
 def decipher():
-    Crypt_arr = np.zeros((2, 2))
-    Plain_arr = np.zeros((2, 2))
 
-    for i in range(0, 2):  # ----input
-        for j in range(0, 2):
-            Plain_arr[i][j] = int(input(f"p{i},{j}: "))
+    template = input("template: ")
+    raw_plain = conversion.text_decode(input("p: "), template)
+    raw_crypt = conversion.text_decode(input("c: "), template)
 
-    for i in range(0, 2):  # ----input
-        for j in range(0, 2):
-            Crypt_arr[i][j] = int(input(f"c{i},{j}: "))
+    plain_arr = conversion.value_encode(raw_plain)
+    crypt_arr = conversion.value_encode(raw_crypt)
 
-    mod = (int(input("mod: ")))
+    mod = len(template)
 
-    plain_inv = Inverse(Plain_arr, mod)
-    Key = np.dot(Crypt_arr, plain_inv) % mod
+    plain_inv = Inverse(plain_arr, mod)
+    Key = np.dot(crypt_arr, plain_inv) % mod
     print("#### result ####")
     print("encryption Key")
-    console_input(Key)
+    console_out(Key)
 
     Key_determinant = sp.gcdex(Determinant(Key), mod)[0] % mod
     Key_inv = np.dot(Key_determinant, Inverse_arr(Key)) % mod
     print("decryption key")
-    console_input(Key_inv)
+    console_out(Key_inv)
 
 
 def decrypt():
@@ -81,8 +78,7 @@ def convert():
     row_answer = np.dot(Key, value_arr) % modN    # 行列の掛け算
     answer = conversion.value_decode(row_answer)    # 単一配列に変換
     print("#### result ####")
-    for t in conversion.text_encode(answer, text_template):
-        print(t, end='')
+    print(conversion.text_encode(answer, text_template))
 
 
 if __name__ == '__main__':
