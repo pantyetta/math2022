@@ -70,7 +70,7 @@ def decrypt():
         print(t, end='')
 
 
-def crypt():
+def convert():
     Key, text, text_template, modN = console_input()
 
     raw_value_arr = conversion.text_decode(text, text_template)  # テキストを数値に変換
@@ -91,7 +91,7 @@ if __name__ == '__main__':
             print("decrypt mode...")
             decrypt()
         else:
-            print("crypt mode...")
-            crypt()
+            print("convert mode...")
+            convert()
     except KeyboardInterrupt:
         pass
