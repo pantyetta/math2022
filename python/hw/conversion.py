@@ -14,12 +14,12 @@ def text_decode(text="", template=""):
 
 
 def text_encode(value=[], template=""):
-    result = []
+    result = ""
     for i in value:
         if 0 <= i < len(template):
-            result.append(template[i])
+            result += template[i]
         else:
-            result.append("-1")
+            result += "-1"
     return result
 
 
@@ -37,6 +37,23 @@ def value_decode(value):
         result.append(int(value[0][i]))
         result.append(int(value[1][i]))
     return result
+
+
+def nshin_decode(text, template):
+    result = 0
+    for i in range(len(text)):
+        for j in range(len(template)):
+            if text[i] == template[j]:
+                result += (len(template) ** (len(text) - i - 1)) * j
+    return result
+
+
+def nshin_encode(value, template):
+    result = ""
+    for t in value:
+        result += template[int(t, len(template))]
+    return result
+
 
 # def Encorder(text, template):
 #     result = 0
