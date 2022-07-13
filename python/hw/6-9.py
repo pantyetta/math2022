@@ -56,7 +56,7 @@ def search():
     console_out(Key_inv)
 
 
-def decrypt():
+def decrypt_key():
     Key, text, text_template, modN = console_input()
 
     Key = Inverse(Key, modN)
@@ -87,9 +87,9 @@ if __name__ == '__main__':
         if len(args) > 1 and args[1] == "--search":
             print("search mode...")
             search()
-        elif len(args) > 1 and args[1] == "--decrypt":
-            print("decrypt mode...")
-            decrypt()
+        elif len(args) > 1 and args[1] == "--decrypt-key":
+            print("generate decrypt mode...")
+            decrypt_key()
         else:
             print("convert mode...")
             convert()
